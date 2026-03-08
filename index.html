@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facemash Filles</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;  /* Empêche le scroll */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Le cadre prendra toute la largeur */
+}
+
+.header-text {
+  background-color: #8B0000;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 3em;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.duel-wrapper {
+  border: 2px solid #8B0000;
+  background-color: #fff;
+  width: 100%;          
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  margin: 0;            
+}
+
+.text-container {
+  text-align: center;
+  margin: 0 0 30px 0;
+  padding: 0 20px;
+}
+
+#message { font-size: 1.7em; font-weight: bold; color: #333; margin: 0 0 12px 0; }
+#juju { font-size: 2em; font-weight: bold; color: #333; margin: 0 20px 5px 20px; }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fille-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.choice {
+  width: 280px;
+  height: 380px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #8B0000;
+}
+
+.or-text {
+  font-size: 1.6em;
+  color: #333;
+  margin: 0 0.5 px;
+  padding: 2px 0;       
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;  
+}
+.houses {
+  width: 100%;
+  text-align: center;
+  color: #00bfff;
+  font-weight: bold;
+  margin-top: 60px;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+}
+
+.duel-links {
+  text-align: center;
+  color: #000;
+  margin-top: 10px;
+  font-size: 1em;
+}
+.duel-links span {
+  margin: 0 15px;
+  cursor: default;
+  text-decoration: none;
+  color: #000;
+}
+
+.flex-bottom {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .container { flex-direction: column; align-items: center; }
+  .choice { width: 80%; height: auto; margin-bottom: 20px; }
+  .or-text { margin: 10px 0; padding: 5px 0; }
+  #message { font-size: 1.5em; }
+  #juju { font-size: 1.8em; }
+  .houses { font-size: 0.9em; }
+}
+</style>
+</head>
+<body>
+<div class="header-text">FACEMASH</div>
+<main>
+  <div class="duel-wrapper">
+    <div class="text-container">
+      <div id="message">Were we let in for our looks? No. Will we be judged on them? Yes.</div>
+      <div id="juju">Who's Hotter? Click to Choose.</div>
+    </div>
+
+    <div class="container" id="choicesContainer"></div>
+
+    <div class="houses">
+      ADAMS &nbsp; CABOT &nbsp; DUNSTER &nbsp; ELIOT &nbsp; KIRKLAND &nbsp; LEVERETT &nbsp; LOWELL &nbsp; MATHER &nbsp; PFOHO &nbsp; RANDOM
+    </div>
+
+    <div class="duel-links">
+      <span>About</span> <span>Submit</span> <span>Rankings</span> <span>Previous</span>
+    </div>
+  </div>
+
+  <div class="flex-bottom"></div>
+</main>
+
+<script>
+const toutesFilles = [
+  { nom: "Fille 1",  image: "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 2",  image: "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 3",  image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 4",  image: "https://plus.unsplash.com/premium_photo-1670282393309-70fd7f8eb1ef?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 5",  image: "https://images.unsplash.com/photo-1760552069633-c05f246a5d8c?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 6",  image: "https://images.unsplash.com/photo-1617037448248-6bd7b4a0d038?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 7",  image: "https://plus.unsplash.com/premium_photo-1661293869113-4e4e5735b62d?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 8",  image: "https://plus.unsplash.com/premium_photo-1763734694097-65bc788c78bb?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 9",  image: "https://plus.unsplash.com/premium_photo-1677368597077-009727e906db?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 10", image: "https://plus.unsplash.com/premium_photo-1731617144678-781ad264740a?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 11", image: "https://plus.unsplash.com/premium_photo-1688572454849-4348982edf7d?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 12", image: "https://plus.unsplash.com/premium_photo-1682092866811-6e21d00424e4?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 13", image: "https://plus.unsplash.com/premium_photo-1683121850784-a6bdf87c6150?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 14", image: "https://plus.unsplash.com/premium_photo-1668319914124-57301e0a1850?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 15", image: "https://plus.unsplash.com/premium_photo-1663051197459-16e9241040c7?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 16", image: "https://images.unsplash.com/photo-1659342369520-2ffc6e7a0f42?q=80&w=1287&auto=format&fit=crop", score: 1000 },
+  { nom: "Fille 17", image: "https://images.unsplash.com/photo-1692926623811-d98ae38a2096?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 18", image: "https://images.unsplash.com/photo-1676978393345-972bc3e4e461?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 19", image: "https://images.unsplash.com/photo-1669844444850-5acd7e8c71c5?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 20", image: "https://images.unsplash.com/photo-1732550216149-41c470c95e53?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 21", image: "https://images.unsplash.com/photo-1691480568848-a303e25769c7?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 22", image: "https://images.unsplash.com/photo-1578933301026-3e5e901126dc?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 23", image: "https://plus.unsplash.com/premium_photo-1661440052048-48f37620b3ae?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 24", image: "https://images.unsplash.com/photo-1706951413911-a4477e18ccd5?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 25", image: "https://images.unsplash.com/photo-1705522933212-091e231edf35?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 26", image: "https://images.unsplash.com/photo-1739133783160-bd5d09613477?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 27", image: "https://plus.unsplash.com/premium_photo-1723575847152-7b503e5a1f40?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 28", image: "https://images.unsplash.com/photo-1638109537538-a061dc879617?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 29", image: "https://images.unsplash.com/photo-1698941973286-11c54de2bb50?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 30", image: "https://plus.unsplash.com/premium_photo-1668485968660-67a0f563d59a?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 31", image: "https://plus.unsplash.com/premium_photo-1668485968590-aff3717c1dbe?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 32", image: "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 33", image: "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 34", image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 35", image: "https://plus.unsplash.com/premium_photo-1670282393309-70fd7f8eb1ef?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 36", image: "https://images.unsplash.com/photo-1760552069633-c05f246a5d8c?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 37", image: "https://images.unsplash.com/photo-1617037448248-6bd7b4a0d038?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 38", image: "https://plus.unsplash.com/premium_photo-1661293869113-4e4e5735b62d?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 39", image: "https://plus.unsplash.com/premium_photo-1763734694097-65bc788c78bb?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 40", image: "https://plus.unsplash.com/premium_photo-1677368597077-009727e906db?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 41", image: "https://plus.unsplash.com/premium_photo-1731617144678-781ad264740a?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 42", image: "https://plus.unsplash.com/premium_photo-1688572454849-4348982edf7d?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 43", image: "https://plus.unsplash.com/premium_photo-1682092866811-6e21d00424e4?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 44", image: "https://plus.unsplash.com/premium_photo-1683121850784-a6bdf87c6150?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 45", image: "https://plus.unsplash.com/premium_photo-1668319914124-57301e0a1850?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 46", image: "https://plus.unsplash.com/premium_photo-1663051197459-16e9241040c7?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 47", image: "https://images.unsplash.com/photo-1659342369520-2ffc6e7a0f42?q=80&w=1287&auto=format&fit=crop", score: 1000 },
+  { nom: "Fille 48", image: "https://images.unsplash.com/photo-1692926623811-d98ae38a2096?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 49", image: "https://images.unsplash.com/photo-1676978393345-972bc3e4e461?w=700&auto=format&fit=crop&q=60", score: 1000 },
+  { nom: "Fille 50", image: "https://images.unsplash.com/photo-1669844444850-5acd7e8c71c5?w=700&auto=format&fit=crop&q=60", score: 1000 },
+];
+const K = 32;
+const container = document.getElementById("choicesContainer");
+const pairesJouees = new Set();
+const totalPairesMax = (toutesFilles.length * (toutesFilles.length-1))/2;
+
+function tirerDeuxFillesUnique() {
+  if (pairesJouees.size >= totalPairesMax) return null;
+  let indexGauche, indexDroite, key;
+  do {
+    indexGauche = Math.floor(Math.random() * toutesFilles.length);
+    do { indexDroite = Math.floor(Math.random() * toutesFilles.length); }
+    while(indexDroite===indexGauche);
+    key = [Math.min(indexGauche,indexDroite),Math.max(indexGauche,indexDroite)].join("-");
+  } while(pairesJouees.has(key));
+  pairesJouees.add(key);
+  return [toutesFilles[indexGauche], toutesFilles[indexDroite]];
+}
+
+let [filleGauche, filleDroite] = tirerDeuxFillesUnique();
+
+function calculerProbabilité(scoreA,scoreB) { return 1/(1+Math.pow(10,(scoreB-scoreA)/400)); }
+
+function mettreAJourScores(gagnante,perdante){
+  const pG=calculerProbabilité(gagnante.score,perdante.score);
+  const pP=calculerProbabilité(perdante.score,gagnante.score);
+  gagnante.score+=K*(1-pG);
+  perdante.score+=K*(0-pP);
+}
+
+function afficherDuel(){
+  container.innerHTML="";
+  const leftWrapper=document.createElement("div"); leftWrapper.className="fille-container";
+  const rightWrapper=document.createElement("div"); rightWrapper.className="fille-container";
+
+  const leftImage=document.createElement("img");
+  leftImage.src=filleGauche.image; leftImage.alt=filleGauche.nom; leftImage.className="choice";
+  leftImage.onclick=()=>{ mettreAJourScores(filleGauche,filleDroite); const duo=tirerDeuxFillesUnique(); if(duo){[filleGauche,filleDroite]=duo; afficherDuel();} else { container.innerHTML="<p style='font-size:1.5em;color:#8B0000;font-weight:bold;'>🏁 Toutes les paires ont été jouées !</p>"; }};
+
+  const rightImage=document.createElement("img");
+  rightImage.src=filleDroite.image; rightImage.alt=filleDroite.nom; rightImage.className="choice";
+  rightImage.onclick=()=>{ mettreAJourScores(filleDroite,filleGauche); const duo=tirerDeuxFillesUnique(); if(duo){[filleGauche,filleDroite]=duo; afficherDuel();} else { container.innerHTML="<p style='font-size:1.5em;color:#8B0000;font-weight:bold;'>🏁 Toutes les paires ont été jouées !</p>"; }};
+
+  const orText=document.createElement("div"); orText.className="or-text"; orText.innerText="OR";
+
+  container.appendChild(leftWrapper);
+  leftWrapper.appendChild(leftImage);
+
+  container.appendChild(orText);
+
+  container.appendChild(rightWrapper);
+  rightWrapper.appendChild(rightImage);
+}
+
+afficherDuel();
+</script>
+</body>
+</html>
