@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facemash Filles</title>
-
 <style>
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: hidden;  /* Empêche le scroll */
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
 }
@@ -18,7 +17,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: stretch; /* Le cadre prendra toute la largeur */
 }
 
 .header-text {
@@ -45,13 +44,13 @@ main {
 .duel-wrapper {
   border: 2px solid #8B0000;
   background-color: #fff;
-  width: 100%;
+  width: 100%;          
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 0;
-  margin: 0;
+  margin: 0;            
 }
 
 .text-container {
@@ -60,26 +59,13 @@ main {
   padding: 0 20px;
 }
 
-#message {
-  font-size: 1.7em;
-  font-weight: bold;
-  color: #333;
-  margin: 0 0 12px 0;
-}
-
-#juju {
-  font-size: 2em;
-  font-weight: bold;
-  color: #333;
-  margin: 0 20px 5px 20px;
-}
+#message { font-size: 1.7em; font-weight: bold; color: #333; margin: 0 0 12px 0; }
+#juju { font-size: 2em; font-weight: bold; color: #333; margin: 0 20px 5px 20px; }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .fille-container {
@@ -95,28 +81,18 @@ main {
   object-fit: cover;
   cursor: pointer;
   border: 2px solid #8B0000;
-  box-sizing: border-box;
-}
-
-.duel-name {
-  margin-top: 12px;
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
 }
 
 .or-text {
   font-size: 1.6em;
   color: #333;
-  margin: 0 8px;
-  padding: 2px 0;
+  margin: 0 0.5px;
+  padding: 2px 0;       
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: normal;
+  font-weight: normal;  
 }
-
 .houses {
   width: 100%;
   text-align: center;
@@ -133,7 +109,6 @@ main {
   margin-top: 10px;
   font-size: 1em;
 }
-
 .duel-links span {
   margin: 0 15px;
   cursor: default;
@@ -145,322 +120,40 @@ main {
   flex: 1;
 }
 
-.classement-final {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.classement-titre {
-  text-align: center;
-  color: #8B0000;
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0 0 25px 0;
-}
-
-.classement-images {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 25px;
-  width: 100%;
-}
-
-.classement-fille {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 280px;
-}
-
-.classement-photo {
-  width: 280px;
-  height: 380px;
-  object-fit: cover;
-  border: 2px solid #8B0000;
-  box-sizing: border-box;
-}
-
-.classement-position {
-  margin-top: 10px;
-  color: #8B0000;
-  font-size: 1.3em;
-  font-weight: bold;
-  text-align: center;
-}
-
-.classement-score {
-  margin-top: 4px;
-  color: #555;
-  font-size: 0.95em;
-  text-align: center;
-}
-
-.mentions-button {
-  margin-top: 25px;
-  padding: 12px 25px;
-  background-color: #8B0000;
-  color: white;
-  border: 2px solid #8B0000;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.mentions-button:hover {
-  background-color: white;
-  color: #8B0000;
-  border-color: #8B0000;
-  transform: scale(1.03);
-}
-
-.mentions-honorables {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.mentions-titre {
-  text-align: center;
-  color: #8B0000;
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0 0 18px 0;
-}
-
-.mentions-images {
-  display: grid;
-  grid-template-columns: repeat(8, 150px);
-  justify-content: center;
-  align-items: start;
-  column-gap: 5px;
-  row-gap: 18px;
-  width: 100%;
-}
-
-.mention-fille {
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.mention-photo {
-  width: 150px;
-  height: 200px;
-  object-fit: cover;
-  border: 2px solid #8B0000;
-  box-sizing: border-box;
-}
-
-.mention-position {
-  margin-top: 6px;
-  color: #8B0000;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-}
-
-.mention-nom {
-  margin-top: 3px;
-  font-size: 0.95em;
-  font-weight: bold;
-  color: #333;
-  line-height: 1.1;
-}
-
-.mention-score {
-  margin-top: 3px;
-  font-size: 0.85em;
-  color: #555;
-}
-
-.retour-button {
-  margin-top: 18px;
-  padding: 10px 22px;
-  background-color: white;
-  color: #8B0000;
-  border: 2px solid #8B0000;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.retour-button:hover {
-  background-color: #8B0000;
-  color: white;
-}
-
-@media (max-width: 1400px) {
-  .mentions-images {
-    grid-template-columns: repeat(8, 150px);
-    justify-content: center;
-    column-gap: 5px;
-    row-gap: 18px;
-  }
-
-  .mention-fille {
-    width: 150px;
-  }
-
-  .mention-photo {
-    width: 150px;
-    height: 200px;
-  }
-
-  .mention-nom {
-    font-size: 0.95em;
-  }
-
-  .mention-score {
-    font-size: 0.85em;
-  }
-}
-
-@media (max-width: 900px) {
-  .mentions-images {
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 12px;
-  }
-
-  .mention-fille {
-    width: 120px;
-  }
-
-  .mention-photo {
-    width: 120px;
-    height: 155px;
-  }
-}
-
 @media (max-width: 600px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .choice {
-    width: 80%;
-    height: auto;
-    margin-bottom: 5px;
-  }
-
-  .duel-name {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-  }
-
-  .or-text {
-    margin: 10px 0;
-    padding: 5px 0;
-  }
-
-  #message {
-    font-size: 1.5em;
-  }
-
-  #juju {
-    font-size: 1.8em;
-  }
-
-  .houses {
-    font-size: 0.9em;
-  }
-
-  .classement-images {
-    gap: 8px;
-  }
-
-  .classement-fille {
-    width: 30%;
-  }
-
-  .classement-position {
-    font-size: 1em;
-  }
-
-  .classement-score {
-    font-size: 0.75em;
-  }
-
-  .mentions-images {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .mention-fille {
-    width: 100%;
-  }
-
-  .mention-photo {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 4;
-  }
-
-  .mention-nom {
-    font-size: 0.8em;
-  }
-
-  .mention-score {
-    font-size: 0.7em;
-  }
+  .container { flex-direction: column; align-items: center; }
+  .choice { width: 80%; height: auto; margin-bottom: 20px; }
+  .or-text { margin: 10px 0; padding: 5px 0; }
+  #message { font-size: 1.5em; }
+  #juju { font-size: 1.8em; }
+  .houses { font-size: 0.9em; }
 }
 </style>
 </head>
-
 <body>
-
-<div class="header-text">
-  FACEMASH
-</div>
-
+<div class="header-text">FACEMASH</div>
 <main>
-
   <div class="duel-wrapper">
-
     <div class="text-container">
-
-      <div id="message">
-        Were we let in for our looks? No. Will we be judged on them? Yes.
-      </div>
-
-      <div id="juju">
-        Who's Hotter? Click to Choose.
-      </div>
-
+      <div id="message">Were we let in for our looks? No. Will we be judged on them? Yes.</div>
+      <div id="juju">Who's Hotter? Click to Choose.</div>
     </div>
 
     <div class="container" id="choicesContainer"></div>
 
     <div class="houses">
-      ADAMS &nbsp; CABOT &nbsp; DUNSTER &nbsp; ELIOT &nbsp;
-      KIRKLAND &nbsp; LEVERETT &nbsp; LOWELL &nbsp; MATHER &nbsp;
-      PFOHO &nbsp; RANDOM
+      ADAMS &nbsp; CABOT &nbsp; DUNSTER &nbsp; ELIOT &nbsp; KIRKLAND &nbsp; LEVERETT &nbsp; LOWELL &nbsp; MATHER &nbsp; PFOHO &nbsp; RANDOM
     </div>
 
     <div class="duel-links">
-      <span>About</span>
-      <span>Submit</span>
-      <span>Rankings</span>
-      <span>Previous</span>
+      <span>About</span> <span>Submit</span> <span>Rankings</span> <span>Previous</span>
     </div>
-
   </div>
 
   <div class="flex-bottom"></div>
-
 </main>
 
 <script>
-
 const toutesFilles = [
   { nom: "Fille 1", image: "https://img.freepik.com/photos-premium/portrait-jeune-femme-debout-dans-ville_1048944-15590302.jpg?w=740", score: 1000 },
   { nom: "Fille 2", image: "https://img.freepik.com/photos-premium/portrait-belle-jeune-femme_1048944-14282249.jpg?w=740", score: 1000 },
@@ -563,506 +256,63 @@ const toutesFilles = [
   { nom: "Fille 99", image: "https://img.freepik.com/photos-gratuite/incroyable-jolie-jeune-femme-aux-cheveux-longs-au-chapeau-robe-lumiere-blanche-profitant-journee-ensoleillee-printemps-dans-jardin-fond-sakura-fleurs_291049-2200.jpg?w=740", score: 1000 },
   { nom: "Fille 100", image: "https://plus.unsplash.com/premium_photo-1665663927708-e3287b105c44?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8amV1bmUlMjBmaWxsZXxlbnwwfHwwfHx8MA%3D%3D", score: 1000 },
 ];
-
-
-const duels = [];
-
-for (let i = 0; i < toutesFilles.length; i++) {
-
-  for (let j = i + 1; j < toutesFilles.length; j++) {
-
-    duels.push([
-      toutesFilles[i],
-      toutesFilles[j]
-    ]);
-
-  }
-
-}
-
-
-for (let i = duels.length - 1; i > 0; i--) {
-
-  const j = Math.floor(Math.random() * (i + 1));
-
-  [duels[i], duels[j]] =
-    [duels[j], duels[i]];
-
-}
-
-let duelActuel = 0;
-
-
-toutesFilles.forEach((fille) => {
-
-  const image = new Image();
-
-  image.src = fille.image;
-
-});
-
-
-const container =
-  document.getElementById("choicesContainer");
-
-
-function fillePerdLeDuel(fille) {
-
-  if (fille.score > 0) {
-
-    fille.score--;
-
-  }
-
-}
-
+const K = 32;
+const container = document.getElementById("choicesContainer");
+const pairesJouees = new Set();
+const totalPairesMax = (toutesFilles.length * (toutesFilles.length-1))/2;
 
 function tirerDeuxFillesUnique() {
-
-  if (duelActuel >= duels.length) {
-
-    return null;
-
-  }
-
-  const duo = duels[duelActuel];
-
-  duelActuel++;
-
-  return duo;
-
+  if (pairesJouees.size >= totalPairesMax) return null;
+  let indexGauche, indexDroite, key;
+  do {
+    indexGauche = Math.floor(Math.random() * toutesFilles.length);
+    do { indexDroite = Math.floor(Math.random() * toutesFilles.length); }
+    while(indexDroite===indexGauche);
+    key = [Math.min(indexGauche,indexDroite),Math.max(indexGauche,indexDroite)].join("-");
+  } while(pairesJouees.has(key));
+  pairesJouees.add(key);
+  return [toutesFilles[indexGauche], toutesFilles[indexDroite]];
 }
 
+let [filleGauche, filleDroite] = tirerDeuxFillesUnique();
 
-function afficherMentionsHonorables() {
+function calculerProbabilité(scoreA,scoreB) { return 1/(1+Math.pow(10,(scoreB-scoreA)/400)); }
 
-  container.innerHTML = "";
-
-  document.querySelector(".houses").style.display = "none";
-  document.querySelector(".duel-links").style.display = "none";
-
-  container.style.width = "100%";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.alignItems = "center";
-  container.style.justifyContent = "center";
-
-  const classement =
-    [...toutesFilles].sort(
-      (a, b) => b.score - a.score
-    );
-
-  const mentions =
-    classement.slice(3);
-
-  const bloc =
-    document.createElement("div");
-
-  bloc.className =
-    "mentions-honorables";
-
-  const titre =
-    document.createElement("div");
-
-  titre.className =
-    "mentions-titre";
-
-  titre.innerText =
-    "MENTIONS HONORABLES";
-
-  bloc.appendChild(titre);
-
-  const images =
-    document.createElement("div");
-
-  images.className =
-    "mentions-images";
-
-  mentions.forEach((fille) => {
-
-    const blocFille =
-      document.createElement("div");
-
-    blocFille.className =
-      "mention-fille";
-
-    const photo =
-      document.createElement("img");
-
-    photo.className =
-      "mention-photo";
-
-    photo.src =
-      fille.image;
-
-    photo.alt =
-      fille.nom;
-
-    photo.loading =
-      "lazy";
-
-    const position =
-      document.createElement("div");
-
-    position.className =
-      "mention-position";
-
-    position.innerText =
-      "#" + (classement.indexOf(fille) + 1);
-
-    const nom =
-      document.createElement("div");
-
-    nom.className =
-      "mention-nom";
-
-    nom.innerText =
-      fille.nom;
-
-    const score =
-      document.createElement("div");
-
-    score.className =
-      "mention-score";
-
-    score.innerText =
-      fille.score + " points";
-
-    blocFille.appendChild(photo);
-
-    blocFille.appendChild(position);
-
-    blocFille.appendChild(nom);
-
-    blocFille.appendChild(score);
-
-    images.appendChild(blocFille);
-
-  });
-
-  bloc.appendChild(images);
-
-  const retour =
-    document.createElement("button");
-
-  retour.className =
-    "retour-button";
-
-  retour.innerText =
-    "RETOUR AU CLASSEMENT";
-
-  retour.onclick = () => {
-
-    afficherClassementFinal();
-
-  };
-
-  bloc.appendChild(retour);
-
-  container.appendChild(bloc);
-
+function mettreAJourScores(gagnante,perdante){
+  const pG=calculerProbabilité(gagnante.score,perdante.score);
+  const pP=calculerProbabilité(perdante.score,gagnante.score);
+  gagnante.score+=K*(1-pG);
+  perdante.score+=K*(0-pP);
 }
 
-
-function afficherClassementFinal() {
-
-  container.innerHTML = "";
-
-  document.querySelector(".houses").style.display = "none";
-  document.querySelector(".duel-links").style.display = "none";
-
-  container.style.width = "100%";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.alignItems = "center";
-  container.style.justifyContent = "center";
-
-  const classement =
-    [...toutesFilles].sort(
-      (a, b) => b.score - a.score
-    );
-
-  const top3 =
-    classement.slice(0, 3);
-
-  const bloc =
-    document.createElement("div");
-
-  bloc.className =
-    "classement-final";
-
-  const titre =
-    document.createElement("div");
-
-  titre.className =
-    "classement-titre";
-
-  titre.innerText =
-    "CLASSEMENT FINAL";
-
-  bloc.appendChild(titre);
-
-  const images =
-    document.createElement("div");
-
-  images.className =
-    "classement-images";
-
-  top3.forEach((fille, index) => {
-
-    const position =
-      index + 1;
-
-    const blocFille =
-      document.createElement("div");
-
-    blocFille.className =
-      "classement-fille";
-
-    const photo =
-      document.createElement("img");
-
-    photo.className =
-      "classement-photo";
-
-    photo.src =
-      fille.image;
-
-    photo.alt =
-      fille.nom;
-
-    photo.loading =
-      "eager";
-
-    const nomPosition =
-      document.createElement("div");
-
-    nomPosition.className =
-      "classement-position";
-
-    if (position === 1) {
-
-      nomPosition.innerText =
-        fille.nom + " 🥇";
-
-    } else if (position === 2) {
-
-      nomPosition.innerText =
-        fille.nom + " 🥈";
-
-    } else {
-
-      nomPosition.innerText =
-        fille.nom + " 🥉";
-
-    }
-
-    const score =
-      document.createElement("div");
-
-    score.className =
-      "classement-score";
-
-    score.innerText =
-      fille.score + " points";
-
-    blocFille.appendChild(photo);
-
-    blocFille.appendChild(nomPosition);
-
-    blocFille.appendChild(score);
-
-    images.appendChild(blocFille);
-
-  });
-
-  bloc.appendChild(images);
-
-  const boutonMentions =
-    document.createElement("button");
-
-  boutonMentions.className =
-    "mentions-button";
-
-  boutonMentions.innerText =
-    "VOIR LES MENTIONS HONORABLES";
-
-  boutonMentions.onclick = () => {
-
-    afficherMentionsHonorables();
-
-  };
-
-  bloc.appendChild(boutonMentions);
-
-  container.appendChild(bloc);
-
-}
-
-
-function afficherDuel() {
-
-  container.innerHTML = "";
-
-  document.querySelector(".houses").style.display = "block";
-  document.querySelector(".duel-links").style.display = "block";
-
-  container.style.width = "100%";
-  container.style.display = "flex";
-  container.style.flexDirection = "row";
-  container.style.alignItems = "center";
-  container.style.justifyContent = "center";
-
-
-  /* GAUCHE */
-
-  const leftWrapper =
-    document.createElement("div");
-
-  leftWrapper.className =
-    "fille-container";
-
-  const leftImage =
-    document.createElement("img");
-
-  leftImage.src =
-    filleGauche.image;
-
-  leftImage.alt =
-    filleGauche.nom;
-
-  leftImage.className =
-    "choice";
-
-  const leftName =
-    document.createElement("div");
-
-  leftName.className =
-    "duel-name";
-
-  leftName.innerText =
-    filleGauche.nom;
-
-
-  leftImage.onclick = () => {
-
-    /* La droite perd */
-
-    fillePerdLeDuel(filleDroite);
-
-    const duo =
-      tirerDeuxFillesUnique();
-
-    if (duo) {
-
-
-      filleGauche = duo[0];
-      filleDroite = duo[1];
-
-      afficherDuel();
-
-    } else {
-
-      afficherClassementFinal();
-
-    }
-
-  };
-
-
-  const rightWrapper =
-    document.createElement("div");
-
-  rightWrapper.className =
-    "fille-container";
-
-  const rightImage =
-    document.createElement("img");
-
-  rightImage.src =
-    filleDroite.image;
-
-  rightImage.alt =
-    filleDroite.nom;
-
-  rightImage.className =
-    "choice";
-
-  const rightName =
-    document.createElement("div");
-
-  rightName.className =
-    "duel-name";
-
-  rightName.innerText =
-    filleDroite.nom;
-
-
-  rightImage.onclick = () => {
-
-    /* La gauche perd */
-
-    fillePerdLeDuel(filleGauche);
-
-    const duo =
-      tirerDeuxFillesUnique();
-
-    if (duo) {
-
-      /* IMPORTANT :
-         on récupère bien les NOUVELLES photos */
-
-      filleGauche = duo[0];
-      filleDroite = duo[1];
-
-      afficherDuel();
-
-    } else {
-
-      afficherClassementFinal();
-
-    }
-
-  };
-
-
-  const orText =
-    document.createElement("div");
-
-  orText.className =
-    "or-text";
-
-  orText.innerText =
-    "OR";
-
-
-  leftWrapper.appendChild(leftImage);
-
-  leftWrapper.appendChild(leftName);
-
-  rightWrapper.appendChild(rightImage);
-
-  rightWrapper.appendChild(rightName);
-
+function afficherDuel(){
+  container.innerHTML="";
+  const leftWrapper=document.createElement("div"); leftWrapper.className="fille-container";
+  const rightWrapper=document.createElement("div"); rightWrapper.className="fille-container";
+
+  const leftImage=document.createElement("img");
+  leftImage.src=filleGauche.image; leftImage.alt=filleGauche.nom; leftImage.className="choice";
+  leftImage.onclick=()=>{ mettreAJourScores(filleGauche,filleDroite); const duo=tirerDeuxFillesUnique(); if(duo){[filleGauche,filleDroite]=duo; afficherDuel();} else { container.innerHTML="<p style='font-size:1.5em;color:#8B0000;font-weight:bold;'>🏁 Toutes les paires ont été jouées !</p>"; }};
+
+  const rightImage=document.createElement("img");
+  rightImage.src=filleDroite.image; rightImage.alt=filleDroite.nom; rightImage.className="choice";
+  rightImage.onclick=()=>{ mettreAJourScores(filleDroite,filleGauche); const duo=tirerDeuxFillesUnique(); if(duo){[filleGauche,filleDroite]=duo; afficherDuel();} else { container.innerHTML="<p style='font-size:1.5em;color:#8B0000;font-weight:bold;'>🏁 Toutes les paires ont été jouées !</p>"; }};
+
+  const orText=document.createElement("div"); orText.className="or-text"; orText.innerText="OR";
 
   container.appendChild(leftWrapper);
+  leftWrapper.appendChild(leftImage);
 
   container.appendChild(orText);
 
   container.appendChild(rightWrapper);
-
+  rightWrapper.appendChild(rightImage);
 }
 
-
-let [filleGauche, filleDroite] =
-  tirerDeuxFillesUnique();
-
 afficherDuel();
-
 </script>
-
 </body>
- <!--
+   <!--
 
 
  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⢔⣒⠂⣀⣀⣤⣄⣀⠀⠀
